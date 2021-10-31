@@ -14,16 +14,4 @@ class getWeather:
         temp = data['main']['temp']
         return temp
 
-class WebHook:
-    def __init__(self, url:str, temp:float) -> None:
-        self.url = url
-        self.temp = temp
-
-    def send(self):
-        data = {"value1": str(self.temp)}
-        print(data)
-        requests.post(self.url, json=data)
-
-sao_paulo = getWeather('São Paulo')
-tweet = WebHook('https://maker.ifttt.com/trigger/t/with/key/beAZ5WtBpub2VZ6TM24TWW', sao_paulo.weather())
-tweet.send()
+print(getWeather('São Paulo').weather())
